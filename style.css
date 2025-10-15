@@ -20,7 +20,7 @@
     font-family: "Inter", "Segoe UI", Tahoma, sans-serif;
     color: var(--text);
     line-height: 1.6;
-    background: #0a0a0a;
+    background: #000000;
   }
 
   section {
@@ -35,7 +35,7 @@
 
   .site-nav {
     background: transparent;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.18);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,6 +59,22 @@
   .site-nav a:hover {
     color: #fff;
   }
+  /* Highlight current page link */
+  .site-nav a.active {
+    color: var(--primary);
+    position: relative;
+    font-weight: 700;
+  }
+  .site-nav a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 2px;
+    background: var(--primary);
+    border-radius: 2px;
+  }
   
   .container {
     width: 90%;
@@ -68,7 +84,7 @@
   }
   
   .hero {
-    background: linear-gradient(180deg, var(--primary-900), var(--primary-700));
+    background: #000000;
     color: var(--white);
     padding: 4rem 0;
     min-height: 60vh;
@@ -144,10 +160,33 @@
     border: 1px solid rgba(0,0,0,0.05);
   }
   .cta-button:hover { background: #f8f8f8; }
+  /* Emphasize hero CTA with the same red as numbered badges */
+  .hero .cta-button {
+    background: linear-gradient(180deg, var(--primary), var(--primary-700));
+    color: #ffffff;
+    border: 1px solid rgba(214,31,38,0.45);
+    box-shadow: 0 4px 14px rgba(214,31,38,0.25);
+  }
+  .hero .cta-button:hover {
+    background: linear-gradient(180deg, var(--primary-700), var(--primary-900));
+  }
   
   .about, .services, .why-us, .contact {
     padding: 3rem 0;
-    background: #0a0a0a;
+    background: #000000;
+  }
+  /* Section separators */
+  .about, .why-us { position: relative; }
+  .about::before, .why-us::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.18);
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px; /* match .container */
   }
   .about-grid {
     display: grid;
@@ -155,20 +194,21 @@
     gap: 1.25rem;
     margin-top: 1.25rem;
     align-items: start;
+    position: relative;
   }
   .about-left {
     text-align: left;
   }
   .about-badge {
     display: inline-block;
-    background: linear-gradient(180deg, var(--surface), #111);
+    background: linear-gradient(180deg, var(--primary), var(--primary-700));
     color: #fff;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(214,31,38,0.45);
     border-radius: 8px;
     padding: 0.5rem 0.75rem;
     font-weight: 700;
     letter-spacing: 0.2px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25), 0 0 0 2px rgba(214,31,38,0.18);
   }
   .about-left .tagline {
     font-size: 3rem;
@@ -180,20 +220,78 @@
   }
   .about-right {
     text-align: left;
+    position: relative; /* anchor dotted connector */
   }
+  .about-right { counter-reset: about-step; }
   .about-point {
-    color: var(--muted);
+    position: relative;
+    z-index: 2; /* keep cards above the connector line */
+    color: #ddd;
     margin-bottom: 0.9rem;
     line-height: 1.7;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0.9rem 1rem 0.9rem 3.25rem;
+    box-shadow: none;
+  }
+  .about-point::before {
+    counter-increment: about-step;
+    content: counter(about-step);
+    position: absolute;
+    left: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #fff;
+    background: linear-gradient(180deg, var(--primary), var(--primary-700));
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25), 0 0 0 2px rgba(214,31,38,0.18);
+    z-index: 3; /* badge above connector line */
+  }
+  /* Dotted connector aligning with badge centers */
+  .about-right::before {
+    content: "";
+    position: absolute;
+    top: calc(0.9rem + 14px); /* from first card top to badge center */
+    bottom: calc(0.9rem + 14px + 0.9rem); /* to last card badge center incl. its bottom margin */
+    left: calc(0.9rem + 32px); /* nudge right to true badge center */
+    width: 2px;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.9) 0 8px,  /* longer dash */
+      rgba(255,255,255,0) 8px 18px  /* longer gap */
+    );
+    z-index: 1; /* under cards and badges, but visible in left gutter */
   }
   @media (min-width: 900px) {
     .about-grid {
       grid-template-columns: 1fr 1.4fr;
       gap: 2rem;
     }
+    .about-grid::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      border-radius: 1px;
+      z-index: 0; /* keep behind dotted connector and content */
+      left: calc(41.6667% + 1rem); /* center within the 2rem gap */
+    }
+    .about-right {
+      padding-left: 1.25rem; /* space between divider and content */
+    }
   }
   .why-us {
-    background: #0b0b0b;
+    background: #000000;
   }
   .about .about-points {
     list-style: none;
@@ -282,6 +380,27 @@
     font-size: 1.05rem;
     line-height: 1.35;
   }
+  .why-us .item-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .why-us .item-title .box-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, var(--surface), #101010);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25), inset 0 0 0 2px rgba(214,31,38,0.12);
+    flex: 0 0 28px;
+  }
+  .why-us .item-title .box-icon svg {
+    display: block;
+  }
   .why-us .item-desc {
     color: var(--muted);
     font-size: 0.95rem;
@@ -315,7 +434,7 @@
   }
   
   footer {
-    background: #0b0b0b;
+    background: #000000;
     color: rgba(255,255,255,0.9);
     padding: 1rem 0;
     font-size: 0.9rem;
