@@ -10,32 +10,121 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav class="site-nav">
+  <header class="hero hero--compact">
     <div class="container">
-      <a class="brand" href="index.html">Your Company Name</a>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a class="active" href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <header class="hero">
-    <div class="container">
-      <h1>Get in Touch</h1>
+      <nav class="site-nav">
+        <a class="brand" href="index.html">SAGA AI</a>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a class="active" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <h1>Contact</h1>
       <p>We'd love to learn about your goals</p>
     </div>
   </header>
 
   <section class="contact">
     <div class="container">
-      <h2>Contact Us</h2>
-      <p>Let's discuss your business needs and build something great together.</p>
-      <a href="mailto:contact@yourcompany.com" class="cta-button">Email Us</a>
+      <div class="contact-grid">
+        <div class="contact-details contact-card">
+          <h3 class="card-title-heading">Our Details</h3>
+          <p>Tell us about your project and we’ll get back within 1 business day.</p>
+          <ul class="contact-list">
+            <li>
+              <div class="box-icon" aria-hidden="true">✉️</div>
+              <div>
+                <div class="item-title">Email</div>
+                <a href="mailto:contact@yourcompany.com">contact@yourcompany.com</a>
+              </div>
+            </li>
+            <li>
+              <div class="box-icon" aria-hidden="true">📞</div>
+              <div>
+                <div class="item-title">Phone</div>
+                <a href="tel:+1234567890">+1 (234) 567-890</a>
+              </div>
+            </li>
+            <li>
+              <div class="box-icon" aria-hidden="true">📍</div>
+              <div>
+                <div class="item-title">Office</div>
+                <p>123 Main Street, Suite 400, Your City</p>
+              </div>
+            </li>
+            <li>
+              <div class="box-icon" aria-hidden="true">🕒</div>
+              <div>
+                <div class="item-title">Hours</div>
+                <p>Mon–Fri: 9:00 AM – 6:00 PM</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="contact-card contact-form-card">
+          <h3 class="card-title-heading">Send Us Message</h3>
+          <form class="contact-form" id="contactForm" action="#" method="post">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required />
+              </div>
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" placeholder="Company or organization" />
+              </div>
+              <div class="form-field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="Optional" />
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="message">How can we help?</label>
+              <textarea id="message" name="message" rows="5" placeholder="Describe your needs..." required></textarea>
+            </div>
+            <button type="submit" class="cta-button">Send Message</button>
+          </form>
+        </div>
+      </div>
     </div>
   </section>
+
+  <script>
+    (function() {
+      var form = document.getElementById('contactForm');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = document.getElementById('name') ? document.getElementById('name').value.trim() : '';
+        var email = document.getElementById('email') ? document.getElementById('email').value.trim() : '';
+        var company = document.getElementById('company') ? document.getElementById('company').value.trim() : '';
+        var phone = document.getElementById('phone') ? document.getElementById('phone').value.trim() : '';
+        var message = document.getElementById('message') ? document.getElementById('message').value.trim() : '';
+
+        fetch('/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, company, phone, message })
+        }).then(function(r) {
+          if (!r.ok) throw new Error('Request failed');
+          return r.json();
+        }).then(function() {
+          alert('Thanks! Your message has been sent.');
+          form.reset();
+        }).catch(function() {
+          alert('Sorry, something went wrong sending your message. Please try again later.');
+        });
+      });
+    })();
+  </script>
 
   <footer>
     <p>© 2025 Your Company Name. All rights reserved.</p>
