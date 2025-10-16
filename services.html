@@ -7,10 +7,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="hero">
+  <header class="hero hero--compact">
     <div class="container">
       <nav class="site-nav">
         <a class="brand" href="index.html">SAGA AI</a>
@@ -22,33 +23,70 @@
       </ul>
       </nav>
     </div>
-    <div class="hero-body">
-      <div class="container">
-        <h1>Our Services</h1>
-      <p>What we can do for your business</p>
-      </div>
-    </div>
   </header>
 
   <section class="services">
     <div class="container">
-      <h2>Our Services</h2>
+      <span class="section-badge">Our Services</span>
+      <h2 class="section-caption">Services We Provide</h2>
+      <p class="section-desc">Empowering teams with intelligent engineering — automation, scalable platforms, and secure cloud foundations designed for speed, reliability, and real outcomes.</p>
+
       <div class="service-grid">
         <div class="service-card">
-          <h3>Automation & DevOps</h3>
-          <p>Infrastructure automation, CI/CD pipelines, and performance optimization to reduce deployment time and cost.</p>
+          <div class="card-title">
+            <i class="fa-solid fa-gears fa-2x" aria-hidden="true" style="color:  var(--primary);"></i>
+            <h3 style="padding-top: 1rem;">Automation & DevOps</h3>
+          </div>
+          <p style="padding-top: 1rem;">Infrastructure as code, CI/CD, observability, and performance tuning to ship faster with confidence.</p>
         </div>
         <div class="service-card">
-          <h3>Web & Backend Development</h3>
-          <p>Scalable backend systems and responsive web applications using Python, Django, React, and cloud platforms.</p>
+          <div class="card-title">
+            <i class="fa-solid fa-code fa-2x" aria-hidden="true" style="color:  var(--primary);"></i>
+            <h3 style="padding-top: 1rem;">Web App Development</h3>
+          </div>
+          <p style="padding-top: 1rem;">Modern, responsive frontends and durable backends using Python, Django, Node, and React.</p>
         </div>
         <div class="service-card">
-          <h3>Cloud Architecture</h3>
-          <p>End-to-end cloud solutions on AWS, GCP, or Azure — designed for scale, security, and speed.</p>
+          <div class="card-title">
+            <i class="fa-solid fa-cloud fa-2x" aria-hidden="true" style="color:  var(--primary);"></i>
+            <h3 style="padding-top: 1rem;">Cloud Architecture</h3>
+          </div>
+          <p style="padding-top: 1rem;">AWS, GCP, or Azure architectures engineered for cost efficiency, scale, and security.</p>
         </div>
         <div class="service-card">
-          <h3>Custom Solutions</h3>
-          <p>Tailored software that solves unique business problems with precision and agility.</p>
+          <div class="card-title">
+            <i class="fa-solid fa-screwdriver-wrench fa-2x" aria-hidden="true" style="color:  var(--primary);"></i>
+            <h3 style="padding-top: 1rem;">Custom Solutions</h3>
+          </div>
+          <p style="padding-top: 1rem;">Tailored software that fits your workflows, not the other way around.</p>
+        </div>
+        <div class="service-card">
+          <div class="card-title">
+            <i class="fa-solid fa-brain fa-2x" aria-hidden="true" style="color:  var(--primary);"></i>
+            <h3 style="padding-top: 1rem;">AI/ML Systems</h3>
+          </div>
+          <p style="padding-top: 1rem;">From data pipelines to model deployment — practical ML that improves decisions.</p>
+        </div>
+        <div class="service-card">
+          <div class="card-title">
+            <i class="fa-solid fa-database fa-2x" aria-hidden="true" style="color:  var(--primary);"></i>
+            <h3 style="padding-top: 1rem;">Data Engineering</h3>
+          </div>
+          <p style="padding-top: 1rem;">ETL/ELT, warehousing, and analytics foundations for trustworthy, actionable insights.</p>
+        </div>
+        <div class="service-card">
+          <div class="card-title">
+            <i class="fa-solid fa-shield-halved fa-2x" aria-hidden="true" style="color:  var(--primary);"></i>
+            <h3 style="padding-top: 1rem;">Security & Compliance</h3>
+          </div>
+          <p style="padding-top: 1rem;">Security by design — hardening, secrets, IAM, and compliance-ready processes.</p>
+        </div>
+        <div class="service-card">
+          <div class="card-title">
+            <i class="fa-solid fa-gauge-high fa-2x" aria-hidden="true" style="color:  var(--primary);"></i>
+            <h3 style="padding-top: 1rem;">Performance Optimization</h3>
+          </div>
+          <p style="padding-top: 1rem;">Latency, throughput, and cost optimizations that keep systems fast at scale.</p>
         </div>
       </div>
     </div>
