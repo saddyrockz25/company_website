@@ -32,7 +32,7 @@ function createTransport() {
 
 app.post('/api/send-email', async (req, res) => {
   try {
-    const { name, email, company, phone, message } = req.body || {};
+    const { name, email, message } = req.body || {};
     const to = process.env.TO_EMAIL || 'ganeshtp92@gmail.com';
 
     const transporter = createTransport();
@@ -40,8 +40,6 @@ app.post('/api/send-email', async (req, res) => {
     const text = [
       `Name: ${name || ''}`,
       `Email: ${email || ''}`,
-      `Company: ${company || ''}`,
-      `Phone: ${phone || ''}`,
       '',
       'Message:',
       message || ''

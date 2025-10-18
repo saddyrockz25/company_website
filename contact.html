@@ -13,7 +13,7 @@
   <header class="hero hero--compact">
     <div class="container">
       <nav class="site-nav">
-        <a class="brand" href="index.html">SAGA AI</a>
+        <a class="brand" href="index.html">AimHigh</a>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="services.html">Services</a></li>
@@ -21,13 +21,14 @@
           <li><a class="active" href="contact.html">Contact</a></li>
         </ul>
       </nav>
-      <h1>Contact</h1>
-      <p>We'd love to learn about your goals</p>
     </div>
   </header>
 
   <section class="contact">
     <div class="container">
+      <span class="contact-section-badge">Contact Us</span>
+      <h2 class="contact-section-caption">We'd love to talk to you</h2>
+      <p class="contact-section-desc">Tell us about your project and we’ll get back within 1 business day.</p>
       <div class="contact-grid">
         <div class="contact-details contact-card">
           <h3 class="card-title-heading">Our Details</h3>
@@ -37,60 +38,48 @@
               <div class="box-icon" aria-hidden="true">✉️</div>
               <div>
                 <div class="item-title">Email</div>
-                <a href="mailto:contact@yourcompany.com">contact@yourcompany.com</a>
+                <a href="mailto:reachus.aimhigh@gmail.com">reachus.aimhigh@gmail.com</a>
               </div>
             </li>
             <li>
               <div class="box-icon" aria-hidden="true">📞</div>
               <div>
                 <div class="item-title">Phone</div>
-                <a href="tel:+1234567890">+1 (234) 567-890</a>
+                <p >+91 9632314918</p>
+                <p >+91 9590422800</p>
               </div>
             </li>
             <li>
               <div class="box-icon" aria-hidden="true">📍</div>
               <div>
                 <div class="item-title">Office</div>
-                <p>123 Main Street, Suite 400, Your City</p>
-              </div>
-            </li>
-            <li>
-              <div class="box-icon" aria-hidden="true">🕒</div>
-              <div>
-                <div class="item-title">Hours</div>
-                <p>Mon–Fri: 9:00 AM – 6:00 PM</p>
+                <p>Prestige Bagamane Temple Bells, RR Nagar, Bengaluru.</p>
               </div>
             </li>
           </ul>
         </div>
         <div class="contact-card contact-form-card">
-          <h3 class="card-title-heading">Send Us Message</h3>
+          <h3 class="card-title-heading">Send us a Message</h3>
           <form class="contact-form" id="contactForm" action="#" method="post">
             <div class="form-row">
               <div class="form-field">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your full name" required />
-              </div>
-              <div class="form-field">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                <input type="text" id="name" name="name" style="width: 450px;" placeholder="Your full name" required />
               </div>
             </div>
             <div class="form-row">
               <div class="form-field">
-                <label for="company">Company</label>
-                <input type="text" id="company" name="company" placeholder="Company or organization" />
-              </div>
-              <div class="form-field">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" placeholder="Optional" />
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" style="width: 450px;" placeholder="you@example.com" required />
               </div>
             </div>
-            <div class="form-field">
-              <label for="message">How can we help?</label>
-              <textarea id="message" name="message" rows="5" placeholder="Describe your needs..." required></textarea>
-            </div>
-            <button type="submit" class="cta-button">Send Message</button>
+            <!-- <div class="form-row"> -->
+              <div class="form-field" style="padding-top: 1rem;">
+                <label for="message">How can we help?</label>
+                <textarea id="message" name="message" rows="3" placeholder="Describe your needs..." required></textarea>
+              </div>
+            <!-- </div> -->
+            <button type="submit" class="contact-cta-button">Send Message</button>
           </form>
         </div>
       </div>
@@ -105,14 +94,12 @@
         e.preventDefault();
         var name = document.getElementById('name') ? document.getElementById('name').value.trim() : '';
         var email = document.getElementById('email') ? document.getElementById('email').value.trim() : '';
-        var company = document.getElementById('company') ? document.getElementById('company').value.trim() : '';
-        var phone = document.getElementById('phone') ? document.getElementById('phone').value.trim() : '';
         var message = document.getElementById('message') ? document.getElementById('message').value.trim() : '';
 
         fetch('/api/send-email', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, company, phone, message })
+          body: JSON.stringify({ name, email, message })
         }).then(function(r) {
           if (!r.ok) throw new Error('Request failed');
           return r.json();
