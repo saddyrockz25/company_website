@@ -33,13 +33,14 @@ function createTransport() {
 app.post('/api/send-email', async (req, res) => {
   try {
     const { name, email, message } = req.body || {};
-    const to = process.env.TO_EMAIL || 'ganeshtp92@gmail.com';
+    const to = "reachus.aimhigh@gmail.com";
 
     const transporter = createTransport();
-    const subject = `Website Contact: ${name || 'New Inquiry'}${company ? ' - ' + company : ''}`;
+    const subject = `Website Contact: ${name || 'New Inquiry'}`;
     const text = [
       `Name: ${name || ''}`,
       `Email: ${email || ''}`,
+
       '',
       'Message:',
       message || ''
