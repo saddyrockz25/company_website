@@ -470,7 +470,7 @@
   }
 
   /* Contact page */
-  .contact .container { text-align: left; }
+  .contact { text-align: center; }
   .contact .contact-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -492,6 +492,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.75rem;
+    text-align: left;
   }
   .contact .contact-list li {
     display: grid;
@@ -531,6 +532,7 @@
     border-radius: 12px;
     padding: 1rem;
     box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    text-align: left;
   }
   @media (min-width: 900px) { .contact .contact-card { padding: 1.25rem; } }
   .contact .card-title-heading {
@@ -543,6 +545,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.75rem;
+    padding-top: 1rem;
   }
   @media (min-width: 768px) {
     .contact .contact-form .form-row { grid-template-columns: 1fr 1fr; gap: 0.9rem; }
@@ -698,7 +701,7 @@
   }
 
   /* Team page */
-  .team { padding: 2.25rem 0 3rem 0; background: #000000; }
+  .team { padding: 2.25rem 0 3rem 0; background: #000000;}
   .team .container { text-align: center; }
   .team .team-grid {
     display: grid;
@@ -736,3 +739,70 @@
   .team-card .team-name { color: #fff; font-size: 1.25rem; margin-top: 0.25rem; }
   .team-card .team-role { color: var(--primary); font-weight: 700; margin: 0.15rem 0 0.5rem 0; }
   .team-card .short-bio { color: var(--muted); }
+  .team-section-badge {
+    display: inline-block;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .team-section-caption {
+    font-size: 1.9rem;
+    letter-spacing: 0.2px;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+  .team-section-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    margin: 0 auto 1.5rem auto;
+    max-width: 860px;
+  }
+  .contact-section-badge {
+    display: inline-block;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .contact-section-caption {
+    font-size: 1.9rem;
+    letter-spacing: 0.2px; 
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+  .contact-section-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    margin: 0 auto 1.5rem auto;
+    max-width: 860px;
+  }
+  .contact-cta-button {
+    display: inline-block;
+    margin-top: 0.25rem;
+  }
+  
+  .contact-cta-button {
+    background: var(--white);
+    color: var(--primary-900);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  .contact-cta-button:hover { background: #f8f8f8; }
+  /* Emphasize hero CTA with the same red as numbered badges */
+  .contact-cta-button {
+    background: linear-gradient(180deg, var(--primary), var(--primary-700));
+    color: #ffffff;
+    border: 1px solid rgba(214,31,38,0.45);
+    box-shadow: 0 4px 14px rgba(214,31,38,0.25);
+  }
+  .contact-cta-button:hover {
+    background: linear-gradient(180deg, var(--primary-700), var(--primary-900));
+  }
