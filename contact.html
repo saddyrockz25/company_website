@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Basic HTML5 document structure -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact - Your Company Name</title>
+  
+  <!-- Google Fonts preconnect for performance optimization -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Inter font family with multiple weights for typography -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Header section with compact hero layout for inner pages -->
   <header class="hero hero--compact">
     <div class="container">
+      <!-- Main navigation bar -->
       <nav class="site-nav">
         <a class="brand" href="index.html">SAGA AI</a>
         <ul>
@@ -21,17 +28,21 @@
           <li><a class="active" href="contact.html">Contact</a></li>
         </ul>
       </nav>
+      <!-- Page title and description -->
       <h1>Contact</h1>
       <p>We'd love to learn about your goals</p>
     </div>
   </header>
 
+  <!-- Contact section with company details and contact form -->
   <section class="contact">
     <div class="container">
       <div class="contact-grid">
+        <!-- Company contact information card -->
         <div class="contact-details contact-card">
           <h3 class="card-title-heading">Our Details</h3>
-          <p>Tell us about your project and we’ll get back within 1 business day.</p>
+          <p>Tell us about your project and we'll get back within 1 business day.</p>
+          <!-- Contact information list with icons -->
           <ul class="contact-list">
             <li>
               <div class="box-icon" aria-hidden="true">✉️</div>
@@ -63,9 +74,12 @@
             </li>
           </ul>
         </div>
+        <!-- Contact form card -->
         <div class="contact-card contact-form-card">
           <h3 class="card-title-heading">Send Us Message</h3>
+          <!-- Contact form with validation and AJAX submission -->
           <form class="contact-form" id="contactForm" action="#" method="post">
+            <!-- First row: Name and Email fields -->
             <div class="form-row">
               <div class="form-field">
                 <label for="name">Name</label>
@@ -76,6 +90,7 @@
                 <input type="email" id="email" name="email" placeholder="you@example.com" required />
               </div>
             </div>
+            <!-- Second row: Company and Phone fields -->
             <div class="form-row">
               <div class="form-field">
                 <label for="company">Company</label>
@@ -86,6 +101,7 @@
                 <input type="tel" id="phone" name="phone" placeholder="Optional" />
               </div>
             </div>
+            <!-- Message field -->
             <div class="form-field">
               <label for="message">How can we help?</label>
               <textarea id="message" name="message" rows="5" placeholder="Describe your needs..." required></textarea>
@@ -97,18 +113,25 @@
     </div>
   </section>
 
+  <!-- JavaScript for contact form handling -->
   <script>
     (function() {
+      // Get the contact form element
       var form = document.getElementById('contactForm');
       if (!form) return;
+      
+      // Add submit event listener to handle form submission
       form.addEventListener('submit', function(e) {
-        e.preventDefault();
+        e.preventDefault(); // Prevent default form submission
+        
+        // Extract form field values with null checks
         var name = document.getElementById('name') ? document.getElementById('name').value.trim() : '';
         var email = document.getElementById('email') ? document.getElementById('email').value.trim() : '';
         var company = document.getElementById('company') ? document.getElementById('company').value.trim() : '';
         var phone = document.getElementById('phone') ? document.getElementById('phone').value.trim() : '';
         var message = document.getElementById('message') ? document.getElementById('message').value.trim() : '';
 
+        // Send form data to server via AJAX
         fetch('/api/send-email', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -117,15 +140,18 @@
           if (!r.ok) throw new Error('Request failed');
           return r.json();
         }).then(function() {
+          // Success: show confirmation and reset form
           alert('Thanks! Your message has been sent.');
           form.reset();
         }).catch(function() {
+          // Error: show error message
           alert('Sorry, something went wrong sending your message. Please try again later.');
         });
       });
     })();
   </script>
 
+  <!-- Footer section with copyright information -->
   <footer>
     <p>© 2025 Your Company Name. All rights reserved.</p>
   </footer>

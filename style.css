@@ -1,15 +1,17 @@
+/* CSS Custom Properties (Variables) - Design system colors and values */
 :root {
-    --primary: #d61f26; /* deep red */
-    --primary-700: #b0191f;
-    --primary-900: #7b0f14;
-    --text: #eaeaea;
-    --muted: #b3b3b3;
-    --light-bg: #0f0f0f; /* dark section bg */
-    --surface: #151515; /* cards/nav surface */
-    --border: #262626;
-    --white: #ffffff;
+    --primary: #d61f26; /* deep red - main brand color */
+    --primary-700: #b0191f; /* darker red variant */
+    --primary-900: #7b0f14; /* darkest red variant */
+    --text: #eaeaea; /* main text color */
+    --muted: #b3b3b3; /* secondary/muted text color */
+    --light-bg: #0f0f0f; /* dark section background */
+    --surface: #151515; /* cards/nav surface color */
+    --border: #262626; /* border color for cards and elements */
+    --white: #ffffff; /* pure white for contrast */
   }
   
+  /* Global reset and base styles */
   * {
     box-sizing: border-box;
     margin: 0;
@@ -17,6 +19,7 @@
   }
   html, body { height: 100%; }
   
+  /* Base body styling with dark theme */
   body {
     font-family: "Inter", "Segoe UI", Tahoma, sans-serif;
     color: var(--text);
@@ -27,6 +30,7 @@
     min-height: 100vh;
   }
 
+  /* Section typography styling */
   section {
     color: var(--text);
   }
@@ -37,6 +41,7 @@
     color: #ffffff;
   }
 
+  /* Navigation bar styling */
   .site-nav {
     background: transparent;
     border-bottom: 1px solid rgba(255,255,255,0.18);
@@ -80,6 +85,7 @@
     border-radius: 2px;
   }
   
+  /* Container layout - responsive width with max-width */
   .container {
     width: 90%;
     max-width: 1100px;
@@ -87,6 +93,7 @@
     text-align: center;
   }
   
+  /* Hero section styling */
   .hero {
     background: #000000;
     color: var(--white);
@@ -180,6 +187,7 @@
     background: linear-gradient(180deg, var(--primary-700), var(--primary-900));
   }
   
+  /* Main content sections - consistent padding and background */
   .about, .services, .why-us, .contact {
     padding: 3rem 0;
     background: #000000;
@@ -346,12 +354,14 @@
     box-shadow: 0 0 0 2px rgba(214,31,38,0.2);
   }
   
+  /* Service grid layout */
   .service-grid {
     display: grid;
     gap: 1rem;
     margin-top: 2rem;
   }
   
+  /* Service card styling */
   .service-card {
     background: transparent;
     padding-top: 1.5rem;
@@ -386,7 +396,7 @@
     max-width: 860px;
   }
 
-  /* Services grid like reference: 2 columns on md, 3 on lg */
+  /* Responsive grid layout - 2 columns on medium screens, 4 on large screens */
   @media (min-width: 768px) {
     .service-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -661,6 +671,7 @@
     }
   }
   
+  /* Footer styling with sticky positioning */
   footer {
     background: #000000;
     color: rgba(255,255,255,0.9);
