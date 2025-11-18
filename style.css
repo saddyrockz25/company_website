@@ -494,6 +494,9 @@
     gap: 0.75rem;
     text-align: left;
   }
+  .contact-details {
+    text-align: center;
+  }
   .contact .contact-list li {
     display: grid;
     grid-template-columns: 36px 1fr;
